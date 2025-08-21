@@ -22,25 +22,63 @@ function clearDisplay() {
 // JS-1: 숫자 입력 함수 구현
 function appendNumber(number) {
     // 여기에 코드 작성
-    
+    if(shouldResetScreen){
+        currentInput = '0';
+        shouldResetScreen = false;
+    }
+   if(currentInput === '0') currentInput = '';
+   currentInput += number;
+    updateDisplay();
 }
 
 // JS-2: 연산자 입력 함수 구현
 function appendOperator(op) {
     // 여기에 코드 작성
-    
+    if(!shouldResetScreen && currentInput !== null){
+        calculate();
+    }
+    operation = op;
+    previousInput = currentInput;
+    shouldResetScreen = true;
 }
 
 // JS-3: 계산 함수 구현
 function calculate() {
     // 여기에 코드 작성
-       
+    if(operation === null || previousInput === '') return;
+    let previous = parseFloat(previousInput);
+    let current = parseFloat(currentInput);
+    if(operation === '+'){
+        result = previous + current;
+    }else if(operation === '-'){
+        result = previous - current;
+    }else if(operation === '*'){
+        result = previous * current;
+    }else if(operation === '/'){
+        if(current === '0'){
+            alert('0으로는 나눌수가 없어요!');
+        }else{
+            result = previous / current;
+        }
+    }
+    currentInput = result;
+    operation = null;
+    previousInput = '';
+    shouldResetScreen = true;
+    updateDisplay();
 }
 
 // JS-4: 소수점 추가 함수 구현 (도전 과제)
 function appendDecimal() {
     // 여기에 코드 작성
-
+    if(shouldResetScreen){
+        currentInput = '0';
+        shouldResetScreen = false;
+    }
+    if(!currentInput.includes('.')){
+        currentInput += '.';
+    }
+    updateDisplay();
 }
 
 // 초기 디스플레이 설정
