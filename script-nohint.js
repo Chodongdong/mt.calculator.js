@@ -48,6 +48,7 @@ function appendOperator(op) {
 // JS-3: 계산 함수 구현
 function calculate() {
     // 여기에 코드 작성
+    let result;
     if(operation === null || previousInput === '') return;
     let previous = parseFloat(previousInput);
     let current = parseFloat(currentInput);
