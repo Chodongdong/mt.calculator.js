@@ -37,7 +37,7 @@ function appendNumber(number) {
 // JS-2: 연산자 입력 함수 구현
 function appendOperator(op) {
     // 여기에 코드 작성
-    if(!shouldResetScreen && currentInput !== null){
+    if(!shouldResetScreen && operation !== null){
         calculate();
     }
     operation = op;
