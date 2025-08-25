@@ -22,13 +22,16 @@ function clearDisplay() {
 // JS-1: 숫자 입력 함수 구현
 function appendNumber(number) {
     // 여기에 코드 작성
-    if(shouldResetScreen){
-        currentInput = '0';
-        shouldResetScreen = false;
-    }
-   if(currentInput === '0') currentInput = '';
-   currentInput += number;
-    updateDisplay();
+   if (shouldResetScreen) {
+    currentInput = "0";     
+    shouldResetScreen = false;
+  }
+  if (currentInput === "0") {
+    currentInput = number.toString(); 
+  } else {
+    currentInput += number; 
+  }
+  updateDisplay();
 }
 
 // JS-2: 연산자 입력 함수 구현
@@ -61,7 +64,7 @@ function calculate() {
             result = previous / current;
         }
     }
-    currentInput = result;
+    currentInput = result.toString();
     operation = null;
     previousInput = '';
     shouldResetScreen = true;
